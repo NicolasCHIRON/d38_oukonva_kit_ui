@@ -1,0 +1,40 @@
+<h1> Je suis grooooot... euh... admin </h1>
+
+
+
+<p> Voici la liste des utilisateurs </p>
+
+
+<div class="card w-50">
+  <div class="card-body">
+    <table style="width: 100%">
+    <colgroup>
+      <col span="1" style="width: 20%;">
+      <col span="2" style="width: 20%;">
+      <col span="3" style="width: 30%;">
+      <col span="4" style="width: 15%;">
+      <col span="5" style="width: 15%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Suppression</th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+      <tbody>
+      <th><%= user.first_name %></th>
+      <th><%= user.last_name %></th>
+      <th><%= user.email %></th>
+      <th><% if user.is_admin %> Admin <% else %> Membre <% end %></th>
+      <th><%= button_to "Supprimer", admin_user_path(user), class:'btn btn-danger', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %></th>
+      </tbody>
+    <% end %>
+    </table>
+  </div>
+  <%= button_to "Gérer les évènements", admin_events_path, method: :get, class:'btn btn-primary m-3', data: { turbo: "false" } %>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="mt-3">
+  <h1>Gestion de l'évènement : <%= @event.title %></h1>
+
+    <% if @event.attendees.count < 2 %>
+      <p> Il y a <%= @event.attendees.count %> participant.</p>
+    <% else %>
+      <p> Il y a <%= @event.attendees.count %> participants.</p>
+    <% end %>
+    </br
+    <p>Liste des participants :</p>
+    <% @event.attendees.each.with_index do |attendee, index| %>
+      </br><%= attendee.first_name %> <%= attendee.last_name %>
+    <% end %>
+    </br></br>
+
+    <% if current_user == @event.administrator %>
+      <%= button_to "Editer l'évènement", edit_event_path(@event), class:"btn btn-primary m-3", method: :get %>
+    <% end %>
+</div>

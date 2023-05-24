@@ -1,0 +1,28 @@
+<h1 class="m-2">Validation de votre participation à l'évènement </h1>
+
+<div class="card mt-4" style="width: 35rem;">
+  <div class="card-body">
+    
+    <p> <span style="color: blue;">Il s'agit de l'évènement n° </span><%= @event.id %> </p>
+
+    <p> <span style="color: blue;">Titre : </span><%= @event.title %></p>
+
+    <p> <span style="color: blue;">Description : </span><%= @event.description %></p>
+
+    <p> <span style="color: blue;">Nombre d'inscrit : </span><%= @event.attendees.count %></p>
+
+    <p> <span style="color: blue;">Créateur de l'évènement : </span><%= @event.administrator.email %></p>
+
+    <p> <span style="color: blue;">Date de début de l'évènement : </span><%= @event.start_date %></p>
+
+    <p> <span style="color: blue;">Date de fin de l'évènement : </span><%= @event.end_date %></p>
+
+    <p> <span style="color: blue;">Lieu de l'évènement : </span><%= @event.location %></p>
+
+    <p> <span style="color: blue;">Prix : </span><%= @event.price %> euros</p> 
+
+
+    <%= button_to "Crache ta thune !", checkout_create_path(total: @event.price, event_id: @event, user_id: current_user), class: "btn btn-danger m-3", data: {turbo: false} %>
+
+  </div>
+</div>

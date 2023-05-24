@@ -1,0 +1,57 @@
+<h2 class="m-3"> Votre profil : </h2>
+
+<div class="card mt-4" style="width: 25rem;">
+
+  <p style="color: blue;">Profil utilisateur n°<%= params['id']%> </p>
+
+  <p> <span style="color: blue;"> Prénom : </span><%= @user.first_name %></p>
+
+  <p> <span style="color: blue;">Nom de famille : </span><%= @user.last_name %></p>
+
+  <p> <span style="color: blue;">Description : </span><%= @user.description %></p>
+
+  <p> <span style="color: blue;">Email : </span><%= @user.email %></p>
+
+  <%= button_to "Editer le mot de passe et / ou l'adresse mail", edit_user_registration_path(current_user), class:"btn btn-primary mb-3", method: :get %>
+
+</div>
+
+  <h2 class="m-3"> Voici les évènements que vous avez créé : </h2>
+
+  <h5> Seuls les évènements validés peuvent être édités (appuyez sur le bouton validé pour cela). </h5>
+  <h5> A noter également que les évènements ne respectant pas la charte sont directement supprimés. </h5>
+
+  <div class="card w-50">
+  <div class="card-body">
+    <table style="width: 100%">
+      <colgroup>
+        <col span="1" style="width: 25%;">
+        <col span="2" style="width: 45%;">
+        <col span="3" style="width: 15%;">
+        <col span="4" style="width: 15%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+    <% @user.events.each do |event| %>
+      <tbody>
+      <td><%= event.title %></td>
+      <td><%= event.description %></td>
+      <td><% if event.event_picture.attached? %> <%= image_tag event.event_picture, width: "100vh", style:"border-radius: 10px;" %> <% else %> - <% end %></td>
+      <td><% if event.need_validation %>
+            <button class="btn btn-warning">En attente</button>
+          <% elsif event.is_validate %>
+            <%= button_to "Validé", edit_event_path(event), class:"btn btn-success", method: :get %>
+          <% else event.denied %>
+            <button class="btn btn-danger">Refusé</button>
+          <% end %></td>
+      </tbody>
+    <% end %>
+    </table>
+  </div>
+</div>

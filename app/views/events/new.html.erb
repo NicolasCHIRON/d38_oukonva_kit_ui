@@ -1,0 +1,51 @@
+</br><h1> Créer un évènement </h1></br>
+
+<div class="card-position">
+<div class="card" style="width: 40rem;">
+
+  <%= form_for @event do |f| %>
+
+      <div class="form-group mt-4">
+        <label>Nom de l'évènement</label>
+        <%= f.text_field :title, class: 'form-control m-2' %>
+      </div>
+
+      <div class="form-group">
+        <label>Description de l'évènement</label>
+        <%= f.text_area :description, class: 'form-control m-2' %>
+      </div>
+
+      <div class="form-group">
+        <label>Lieu de l'évènement</label>
+        <%= f.text_area :location, class: 'form-control m-2' %>
+      </div>
+
+      <div class="form-group">
+        </br><label>Image de l'évènement</label>
+        <%= f.file_field :event_picture, multipart:true %>
+      </div></br>
+
+
+      <div class="form-group">
+        <label>Prix de l'évènement</label>
+        <%= f.number_field :price, min: 1, max: 1000, step: 1, class: 'form-control m-2' %>
+      </div>
+      
+      <div class="form-group">
+        <label>Date de début</label>
+        <%= f.datetime_field :start_date, class: 'form-control m-4 custom-datetime-field' %>
+      </div>
+
+      <div class="form-group">
+        <label>Durée de l'évènement</label>
+        <%= f.number_field :duration, min: 0, step: 5, class: 'form-control m-2' %>
+      </div>
+
+      <div class="form_group" data: { turbo: "false" }>
+        <button type="submit" class="btn btn-primary m-2"> Créer l'évènement</button>
+      </div>
+
+  <% end %>
+  </div>
+</div>
+

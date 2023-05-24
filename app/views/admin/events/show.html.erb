@@ -1,0 +1,26 @@
+<h1 class="mt-4"> Gestion de l'évènement n°<%= params['id'] %></h1>
+
+<div class="card mt-4" style="width: 40rem;">
+  <div class="card-body">
+
+    <p> <span style="color: blue;">Proposé par </span><%= @event.administrator.first_name %> <%= @event.administrator.last_name %> </p>
+
+    <p> <span style="color: blue;">Titre : </span><%= @event.title %></p>
+
+    <p> <span style="color: blue;">Description : </span><%= @event.description %></p>
+
+    <p> <span style="color: blue;">Date de début de l'évènement : </span><%= @event.start_date %></p>
+
+    <p> <span style="color: blue;">Date de fin de l'évènement : </span><%= @event.end_date %></p>
+
+    <p> <span style="color: blue;">Lieu de l'évènement : </span><%= @event.location %></p>
+
+    <p> <span style="color: blue;">Prix : </span><%= @event.price %> euros</p> 
+
+    <%= button_to "Valider l'évènement", admin_event_path(@event), method: :patch, params: { "event" =>  "true" }, form: {style: 'display:inline-block;'}, class:"btn btn-success m-2" %>
+    <%= button_to "Refuser l'évènement", admin_event_path(@event), method: :patch, params: { "event" => "false" }, form: {style: 'display:inline-block;'}, class:"btn btn-danger m-2" %>
+    <%= button_to "Supprimer l'évènement", event_path, method: :delete,form: { data: { turbo_confirm: "Veux-tu supprimer cet évènement (et rendre son créateur malheureux...) ?" }, style: 'display:inline-block;'}, class:"btn btn-dark m-2" %>
+
+  </div>
+</div>
+

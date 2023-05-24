@@ -1,0 +1,30 @@
+<h1> Evènement à gérer</h2>
+
+<p> Il y a actuellement <%= @events.count %> évènement(s) à traiter.
+
+
+<div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title">Evènement en attente de validation </h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Administrateur</th>
+            <th>Images</th>
+            <th>Voir l'évènement</th>
+          </tr>
+        </thead>
+      <% @events.each do |event| %>
+        <tbody>
+        <th><%= event.title %></th>
+        <th><%= event.description %></th>
+        <th><%= event.administrator.first_name %> <%= event.administrator.last_name %></th>
+        <th><% if event.event_picture.attached? %> <%= image_tag event.event_picture, width: "100vh", style:"border-radius: 10px;" %> <% else %> - <% end %></th>
+        <th><%= button_to "Voir l'évènement", admin_event_path(event), class:"btn btn-primary", method: :get %></th>
+        </tbody>
+      <% end %>
+      </table>
+    </div>
+</div>
