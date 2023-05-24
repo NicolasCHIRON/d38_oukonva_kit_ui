@@ -1,0 +1,155 @@
+/* Ajout */
+
+/* pour le footer */
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  text-decoration: none;
+}
+
+footer {
+  position :absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5.5rem
+}
+
+/* pour la grosse bannière */
+
+.big-banner {
+  background-image: url(https://weezevent.com/wp-content/uploads/2020/07/06173606/organiser-evenement-plein-air.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.title-txt-banner {
+  color:white;
+  font-size: 3rem;
+  text-decoration: none;
+  text-shadow: 0 0 1px rgb(255, 255, 255), 0 0 2px rgba(255, 255, 255, 0.3), 0 0 5px rgba(255, 255, 255, 0.2);
+  user-select: none;
+}
+
+.txt-banner {
+  color:white;
+  font-size: 1.4rem;
+  text-shadow:none;
+  user-select: none;
+}
+
+
+/* pour la petite bannière */
+
+.small-banner {
+  width: 100%;
+  height: 40vh;
+  background-image: url(https://www.kromgalerie.fr/wp-content/uploads/2021/01/Tempete-de-Noel-1.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.title-txt-small-banner {
+  color:white;
+  font-size: 5rem;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgb(161, 74, 74,0.6), 0 0 10px rgba(161, 74, 74, 0.3), 0 0 15px rgba(161, 74, 74, 0.2);
+  user-select: none;
+}
+
+.center-object {
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}
+
+/* pour les formulaires */
+
+.card-form {
+  position :absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 50%;
+  width: 100%;
+}
+
+.card-form div {
+  text-align: center;
+}
+
+.card-form button {
+  border-radius: 10px;
+}
+
+.form-control {
+  border-radius: 20px;
+}
+
+.card-position {
+  display: flex;
+  justify-content: center;
+}
+
+/* pour les évènements */
+
+.card-event {
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}
+
+/* pour les participants */
+
+.card-attendees {
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
+}
+
+.card-attendees img {
+  border-radius: 50px;
+}
+
+.card-attendees div div div {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  margin: 0;
+}
+
+/* pour les villes */
+
+.card-city {
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
+}
+
+.card-city div div{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 15px;
+}
+
+/* pour les commentaires */
+
+.card-comment {
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
+}
+
+/* pour les belles bordures */
+
+.border-secondary {
+  border:2px solid #ea39b8;
+  box-shadow: 0 0 25px rgb(161, 74, 74,0.8), 0 0 30px rgba(161, 74, 74, 0.5), 0 0 40px rgba(161, 74, 74, 0.4);
+}
+
+/* pour les titres */
+
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+}

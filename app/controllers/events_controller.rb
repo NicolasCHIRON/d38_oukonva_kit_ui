@@ -36,7 +36,7 @@ class EventsController < ApplicationController
       flash[:notice] = "L'évènement a bien été créé !"
       redirect_to '/'
     else
-      flash[:alert] = "Erreur lors de la création de l'évènement."
+      flash.now[:alert] = "Erreur lors de la création de l'évènement."
       redirect_back(fallback_location: root_path)
     end
   end
@@ -51,7 +51,7 @@ class EventsController < ApplicationController
         flash[:notice] = "Votre évènement a bien été mis à jour !"
         redirect_to @event
       else
-        flash[:alert] = @event.errors.full.messages[0]
+        flash.now[:alert] = @event.errors.full.messages[0]
         render 'edit'
       end
   end

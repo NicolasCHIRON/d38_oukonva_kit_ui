@@ -1,31 +1,32 @@
 <div class="card-form">
   <div>
     <h3 class="mt-4 mb-4">Avez-vous déjà un compte ?</h3>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class:"form-control"}) do |f| %>
+    <form class="form-group">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-floating mb-3">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, placeholder: "name@example.com" %>
       </div>
-
       <div class="form-floating mb-3">
         <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
-
+      <div class="d-md-flex justify-content-around">
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
         </div>
       <% end %>
-
-      <div class="actions">
+        <div>
+          <a href="#">Mot de passe oublié</a>
+        </div>
+      </div>
+      <div>
         <%= f.submit "Log in", class:"btn btn-primary m-3" %>
       </div>
-    <% end %>
-
-    <div class="m-2"><%= render "devise/shared/links" %></div>
+            <% end %>
+      <div class="m-2"><%= render "devise/shared/links" %></div>
+    </form>
   </div>
 </div>
-
-<!-- <%= render "form_new" %> -->

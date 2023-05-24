@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Oukonva</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to "Accueil", root_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Créer un évènement", new_event_path, class:"nav-link" %>
+            </li>
+          </ul>
+        </div>
+        <!-- Si aucun utilisateur n'est connecté, les options s'inscrire et se connecter apparaissent -->
+        <div class="navbar-nav justify-content-end">
+          <% if current_user == nil %>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              S'inscrire / Se connecter
+              </a>
+              <ul class="dropdown-menu">
+                <%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item" %>
+                <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item" %>
+              </ul>
+            </div>
+          <!-- Si on est admin -->
+            <% elsif current_user.is_admin %>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mon profil (<%= current_user.first_name%> <%= current_user.last_name%>)
+              </a>
+              <ul class="dropdown-menu">
+                <%= link_to "Mon profil", user_path(current_user), class:"dropdown-item" %>
+                <%= link_to "Dashboard admin", admin_root_path, class:"dropdown-item" %>
+                <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
+              </ul>
+          <!-- Si on est connecté  --> 
+          <% else %>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mon profil (<%= current_user.first_name%> <%= current_user.last_name%>)
+              </a>
+              <ul class="dropdown-menu">
+                <%= link_to "Mon profil", user_path(current_user), class:"dropdown-item" %>
+                <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
+              </ul>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </nav>
